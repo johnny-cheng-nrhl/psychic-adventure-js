@@ -3,9 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
-import {connect} from 'react-redux'
-import {updateCurrent} from './reducers/todo'
-import {bindActionCreators} from 'redux'
 
 class App extends Component {
   render() {
@@ -27,11 +24,8 @@ class App extends Component {
         </header>
         
         <div className="Todo-App">
-          <TodoForm 
-            currentTodo={this.props.currentTodo}
-            changeCurrent={this.props.updateCurrent}
-          />
-          <TodoList todos={this.props.todos} />
+          <TodoForm />
+          <TodoList />
         </div>
       </div>
     );
@@ -39,11 +33,4 @@ class App extends Component {
  
 }
 
-// const todoChangehandler = (value) => store.dispatch(updateCurrent(value))
-
-const mapStateToProps = (state) => state
-// const mapDispatchToProps = {updateCurrent} will work too without bindActionCreators
-const mapDispatchToProps = (dispatch) => bindActionCreators({updateCurrent}, dispatch)
-const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App)
-export default ConnectedApp
-// export default App;
+export default App;
